@@ -1,10 +1,11 @@
 import sqlite3
-from tkinter import *
 from tkinter import ttk
-
+from tkinter import *
+from db import session
+from models import Producto
+import db
 class VentanaPrincipal:
     db = 'database/productos.db'
-
     def __init__(self, root):
         self.ventana = root
         self.ventana.title("App Gestor de Productos")
@@ -48,7 +49,7 @@ class VentanaPrincipal:
         self.etiqueta_categoria.grid(row=3, column=0, padx=10, pady=5)
 
         # Combobox Categoría
-        self.categorias = ["Electrónica", "Ropa", "Alimentos", "Hogar", "Libros"]
+        self.categorias = ["Electrónica", "Ropa", "Alimentos", "Hogar", "Libros", "Otros"]
         self.categoria = ttk.Combobox(frame, values=self.categorias, font=('Calibri', 13), state='readonly')
         self.categoria.grid(row=3, column=1, padx=10, pady=5)
 
@@ -211,7 +212,4 @@ class VentanaEditarProducto:
         self.ventana_principal.get_productos()
 
 
-if __name__ == '__main__':
-    root = Tk()
-    app = VentanaPrincipal(root)
-    root.mainloop()
+
